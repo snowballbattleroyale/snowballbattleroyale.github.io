@@ -3,6 +3,9 @@ var enemys = []
 var playerimg = document.getElementById("player");
 var enemyimg = document.getElementById("enemy");
 
+var mouX;
+var mouY;
+
 function startGame() {
     enemys[0] = new component(30, 30, "blue", 10, 120, 2);
     player = new component(30, 30, "red", 10, 120, 1);
@@ -22,6 +25,10 @@ var myGameArea = {
         })
         window.addEventListener('keyup', function (e) {
             myGameArea.key = false;
+        })
+        window.addEventListner('mousemove', function(e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
         })
     }, 
     clear : function(){
@@ -80,10 +87,12 @@ function pointto(x_,y_,x1_,y1_,obj) {
 function playerMove(speed) {
     player.speedX = 0;
     player.speedY = 0; 
-    if (myGameArea.key && myGameArea.key == 37) {player.speedX = -speed; }
-    if (myGameArea.key && myGameArea.key == 39) {player.speedX = speed; }
-    if (myGameArea.key && myGameArea.key == 38) {player.speedY = -speed; }
-    if (myGameArea.key && myGameArea.key == 40) {player.speedY = speed; }
+    //do wasd
+    if (myGameArea.key && myGameArea.key == 65) {player.speedX = -speed; }
+    if (myGameArea.key && myGameArea.key == 68) {player.speedX = speed; }
+    if (myGameArea.key && myGameArea.key == 87) {player.speedY = -speed; }
+    if (myGameArea.key && myGameArea.key == 83) {player.speedY = speed; }
+    pointto(player.x, player.y, myGameArea.x, myGameArea.y, player);
     player.moveSpeed();
 }
 
