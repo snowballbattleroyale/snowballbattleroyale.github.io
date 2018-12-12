@@ -36,6 +36,7 @@ function component(width, height, color, x, y) {
     this.speedX = 0;
     this.speedY = 0;    
     this.angle = 0
+    this.speed = 1;
     this.x = x;
     this.y = y;    
     this.update = function() {
@@ -46,6 +47,10 @@ function component(width, height, color, x, y) {
         ctx.fillStyle = color;
         ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
         ctx.restore(); 
+    }
+    this.newPos = function() {
+        this.x += this.speed * Math.sin(this.angle);
+        this.y -= this.speed * Math.cos(this.angle);
     }
 }
 
@@ -73,7 +78,7 @@ function updateGameArea() {
     if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 100 && distence(player.x,player.y,enemys[0].x,enemys[0].y) > -100)
     {
         pointto(enemys[0].x, enemys[0].y, player.x, player.y, enemys[0]);
-        enemys[0].x++;
+        enemys[0].newPos();
     }
     player.update();
     enemys[0].update();
