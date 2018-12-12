@@ -122,7 +122,7 @@ function moveSnowball() {
         snowball.x = player.x;
         snowball.y = player.y;
     }
-    if (gameArea.key && gameArea.key == 32) {
+    if (gameArea.md/*gameArea.key && gameArea.key == 32*/) {
         snowball.godir();
     }
     else {
@@ -138,7 +138,7 @@ function updateGame() {
     playerMove(4);
     if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 500)
     {
-        pointto(enemys[0].x, enemys[0].y, player.x, player.y, 90, enemys[0]);
+        pointto(enemys[0].x, enemys[0].y, player.x, player.y, 90 * Math.PI / 180, enemys[0]);
         enemys[0].godir();
     }
     player.update();
