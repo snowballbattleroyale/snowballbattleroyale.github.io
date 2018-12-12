@@ -47,12 +47,7 @@ function component(width, height, color, x, y, imgt) {
         ctx.translate(this.x, this.y); 
         ctx.rotate(this.angle);
         ctx.fillStyle = color;
-        if (imgt === 1) {
-            ctx.drawImage(playerimg, this.x, this.y);
-        }
-        if (imgt === 2) {
-            ctx.drawImage(enemyimg, this.x, this.y);
-        }
+        ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
         //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
         ctx.restore(); 
     }
