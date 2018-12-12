@@ -126,6 +126,7 @@ function moveSnowball() {
 
 function updateGame() {
     gameArea.clear();
+    moveSnowball();
     playerMove(4);
     if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 500)
     {
