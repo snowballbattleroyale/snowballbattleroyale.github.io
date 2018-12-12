@@ -1,5 +1,7 @@
 var player;
 var enemys = []
+var playerimg = document.getElementById("player");
+var enemyimg = document.getElementById("enemy");
 
 function startGame() {
     enemys[0] = new component(30, 30, "blue", 10, 120);
