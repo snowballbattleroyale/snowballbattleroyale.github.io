@@ -52,7 +52,7 @@ function updateGameArea() {
         player.x = myGameArea.x;
         player.y = myGameArea.y;        
     }
-    if (distense(player.x,player.y,enemys[0].x,enemys[0].y))
+    if (distence(player.x,player.y,enemys[0].x,enemys[0].y))
     {
         enemys[0].x++;
     }
