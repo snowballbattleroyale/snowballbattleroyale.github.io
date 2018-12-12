@@ -1,5 +1,7 @@
 var player;
-var enemys = []
+var snowball;
+var core = 0;
+var enemys = [];
 var playerimg = document.getElementById("player");
 var enemyimg = document.getElementById("enemy");
 
@@ -9,6 +11,7 @@ var mouY;
 function startGame() {
     enemys[0] = new gameObject(30, 30, "blue", 10, 120);
     player = new gameObject(30, 30, "red", 10, 120);
+    snowball = new gameObject(10, 10, "white", player.x,player.y);
     gameArea.start();
 }
 
@@ -41,7 +44,7 @@ function vector2(x_, y_) {
     this.y = y_;
 }
 
-function gameObject(width, height, color, x, y, imgt) {
+function gameObject(width, height, color, x, y) {
     this.width = width;
     this.height = height;
     this.speedX = 0;
@@ -53,6 +56,7 @@ function gameObject(width, height, color, x, y, imgt) {
     this.update = function() {
         ctx = gameArea.context;
         ctx.save();
+        ctx.fillText(core, 100, 50);
         ctx.translate(this.x, this.y); 
         ctx.rotate(this.angle);
         ctx.fillStyle = color;
@@ -96,6 +100,30 @@ function playerMove(speed) {
     player.moveSpeed();
 }
 
+function collision(localObj, otherObj) {
+    if (localObj.x < otherObj.x + otherObj.width &&
+        localObj.x + localObj.width > otherObj.x &&
+        localObj.y < otherObj.y + otherObj.height &&
+        localObj.height + localObj.y > otherObj.y) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function moveSnowball() {
+    if (collision(snowball, enemys[0])) {
+        core++;
+        snowball.x = player.x;
+        snowball.y = player.y;
+    }
+    if (gameArea.key && gameArea.key == 32) {
+        pointto(snowball.x, snowball.y, gameArea.x, gameArea.y, snowball, 0);
+        snowball.godir();
+    }
+}
+
 function updateGame() {
     gameArea.clear();
     playerMove(4);
@@ -105,5 +133,6 @@ function updateGame() {
         enemys[0].godir();
     }
     player.update();
+    snowball.update();
     enemys[0].update();
 }
