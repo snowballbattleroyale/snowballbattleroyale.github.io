@@ -17,9 +17,11 @@ var myGameArea = {
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
-        window.addEventListener('mousedown', function (e) {
-            myGameArea.x = e.pageX-20;
-            myGameArea.y = e.pageY-20;
+        window.addEventListener('keydown', function (e) {
+            myGameArea.key = e.keyCode;
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.key = false;
         })
     }, 
     clear : function(){
@@ -73,11 +75,12 @@ function pointto(x_,y_,x1_,y1_,obj) {
 
 function updateGameArea() {
     myGameArea.clear();
-    if (myGameArea.x && myGameArea.y) {
-        player.x = myGameArea.x;
-        player.y = myGameArea.y;        
-    }
-    
+    myGamePiece.speedX = 0;
+    myGamePiece.speedY = 0; 
+    if (myGameArea.key && myGameArea.key == 37) {myGamePiece.speedX = -1; }
+    if (myGameArea.key && myGameArea.key == 39) {myGamePiece.speedX = 1; }
+    if (myGameArea.key && myGameArea.key == 38) {myGamePiece.speedY = -1; }
+    if (myGameArea.key && myGameArea.key == 40) {myGamePiece.speedY = 1; }
     if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 500)
     {
         pointto(enemys[0].x, enemys[0].y, player.x, player.y, enemys[0]);
