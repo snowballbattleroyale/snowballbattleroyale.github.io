@@ -27,10 +27,12 @@ function component(width, height, color, x, y) {
     this.height = height;
     this.speedX = 0;
     this.speedY = 0;    
+    this.angle = 0
     this.x = x;
     this.y = y;    
     this.update = function() {
         ctx = myGameArea.context;
+        ctx.rotate(this.angle);
         ctx.fillStyle = color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
@@ -38,6 +40,7 @@ function component(width, height, color, x, y) {
 
 function updateGameArea() {
     myGameArea.clear();
+    myGameArea.angle = atan2(myGameArea.x,myGameArea.y);
     if (myGameArea.x && myGameArea.y) {
         myGamePiece.x = myGameArea.x;
         myGamePiece.y = myGameArea.y;        
