@@ -7,8 +7,8 @@ var mouX;
 var mouY;
 
 function startGame() {
-    enemys[0] = new component(30, 30, "blue", 10, 120, 2);
-    player = new component(30, 30, "red", 10, 120, 1);
+    enemys[0] = new component(30, 30, "blue", 10, 120);
+    player = new component(30, 30, "red", 10, 120);
     myGameArea.start();
 }
 
@@ -46,13 +46,14 @@ function component(width, height, color, x, y, imgt) {
     this.height = height;
     this.speedX = 0;
     this.speedY = 0;    
-    this.angle = 0
+    this.angle = 0;
     this.speed = 1;
     this.x = x;
     this.y = y;    
     this.update = function() {
         ctx = myGameArea.context;
         ctx.save();
+        ctx.drawText(myGameArea.x, 100, 100);
         ctx.translate(this.x, this.y); 
         ctx.rotate(this.angle);
         ctx.fillStyle = color;
@@ -97,6 +98,7 @@ function playerMove(speed) {
 }
 
 function updateGameArea() {
+    
     myGameArea.clear();
     playerMove(4);
     if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 500)
