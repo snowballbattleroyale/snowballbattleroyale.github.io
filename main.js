@@ -48,10 +48,10 @@ function component(width, height, color, x, y, imgt) {
         ctx.rotate(this.angle);
         ctx.fillStyle = color;
         if (imgt === 1) {
-            ctx.drawImage(player, this.x, this.y);
+            ctx.drawImage(playerimg, this.x, this.y);
         }
         if (imgt === 2) {
-            ctx.drawImage(enemy, this.x, this.y);
+            ctx.drawImage(enemyimg, this.x, this.y);
         }
         //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
         ctx.restore(); 
