@@ -53,7 +53,7 @@ function component(width, height, color, x, y, imgt) {
     this.update = function() {
         ctx = myGameArea.context;
         ctx.save();
-        ctx.drawText(myGameArea.x, 100, 100);
+        ctx.fillText(myGameArea.x, 100, 100);
         ctx.translate(this.x, this.y); 
         ctx.rotate(this.angle);
         ctx.fillStyle = color;
