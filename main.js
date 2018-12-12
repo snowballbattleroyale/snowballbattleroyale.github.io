@@ -24,6 +24,12 @@ var myGameArea = {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
+
+function vector2(x_, y_) {
+    this.x = x_;
+    this.y = y_;
+}
+
 function component(width, height, color, x, y) {
     this.width = width;
     this.height = height;
@@ -46,14 +52,24 @@ function distence(x_,y_,x1_,y1_)
     return dist;
 }
 
+function pointto(x_,y_,x1_,y1_,obj) {
+    var objpos = new vector2(x_, y_);
+    var localPos = new vector2(x1_,y1_);
+    var offset = new vector2(objpos.x - localPos.x, objpos.y - localPos.y);
+    var angle = Math.atan2(offset.y, offset.x);
+    obj.angle = angle;
+}
+
 function updateGameArea() {
     myGameArea.clear();
     if (myGameArea.x && myGameArea.y) {
         player.x = myGameArea.x;
         player.y = myGameArea.y;        
     }
+    
     if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 100 && distence(player.x,player.y,enemys[0].x,enemys[0].y) > -100)
     {
+        pointto(enemys[0].x, enemys[0].y, player.x, player.y, enemys[0]);
         enemys[0].x++;
     }
     player.update();
