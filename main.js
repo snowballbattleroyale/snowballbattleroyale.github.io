@@ -33,6 +33,9 @@ var gameArea = {
             gameArea.x = e.pageX;
             gameArea.y = e.pageY;
         })
+        window.addEventListener('mousedown', function (e) {
+            gameArea.md = e;
+        })
     }, 
     clear : function(){
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
