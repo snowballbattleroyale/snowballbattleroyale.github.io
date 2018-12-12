@@ -65,7 +65,7 @@ function pointto(x_,y_,x1_,y1_,obj) {
     var localPos = new vector2(x1_,y1_);
     var offset = new vector2(objpos.x - localPos.x, objpos.y - localPos.y);
     var angle = Math.atan2(offset.y, offset.x);
-    obj.angle = angle;
+    obj.angle = angle + 90;
 }
 
 function updateGameArea() {
