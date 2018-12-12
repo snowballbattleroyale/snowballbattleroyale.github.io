@@ -1,7 +1,9 @@
-var myGamePiece;
+var player;
+var enemys = []
 
 function startGame() {
-    myGamePiece = new component(30, 30, "red", 10, 120);
+    enemys[0] = new component(30, 30, "blue", 10, 120);
+    player = new component(30, 30, "red", 10, 120);
     myGameArea.start();
 }
 
@@ -41,8 +43,9 @@ function component(width, height, color, x, y) {
 function updateGameArea() {
     myGameArea.clear();
     if (myGameArea.x && myGameArea.y) {
-        myGamePiece.x = myGameArea.x;
-        myGamePiece.y = myGameArea.y;        
+        player.x = myGameArea.x;
+        player.y = myGameArea.y;        
     }
-    myGamePiece.update();
+    player.update();
+    enemys[0].update();
 }
