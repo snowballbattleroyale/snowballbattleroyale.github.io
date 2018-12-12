@@ -4,8 +4,8 @@ var playerimg = document.getElementById("player");
 var enemyimg = document.getElementById("enemy");
 
 function startGame() {
-    enemys[0] = new component(30, 30, "blue", 10, 120);
-    player = new component(30, 30, "red", 10, 120);
+    enemys[0] = new component(30, 30, "blue", 10, 120, 2);
+    player = new component(30, 30, "red", 10, 120, 1);
     myGameArea.start();
 }
 
@@ -32,7 +32,7 @@ function vector2(x_, y_) {
     this.y = y_;
 }
 
-function component(width, height, color, x, y) {
+function component(width, height, color, x, y, imgt) {
     this.width = width;
     this.height = height;
     this.speedX = 0;
@@ -47,7 +47,13 @@ function component(width, height, color, x, y) {
         ctx.translate(this.x, this.y); 
         ctx.rotate(this.angle);
         ctx.fillStyle = color;
-        ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+        if (imgt === 1) {
+            ctx.drawImage(player, this.x, this.y);
+        }
+        if (imgt === 2) {
+            ctx.drawImage(enemy, this.x, this.y);
+        }
+        //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
         ctx.restore(); 
     }
     this.newPos = function() {
