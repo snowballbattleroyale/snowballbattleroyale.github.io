@@ -7,28 +7,28 @@ var mouX;
 var mouY;
 
 function startGame() {
-    enemys[0] = new component(30, 30, "blue", 10, 120);
-    player = new component(30, 30, "red", 10, 120);
-    myGameArea.start();
+    enemys[0] = new gameObject(30, 30, "blue", 10, 120);
+    player = new gameObject(30, 30, "red", 10, 120);
+    gameArea.start();
 }
 
-var myGameArea = {
+var gameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = window.innerWidth - 10;
         this.canvas.height = window.innerHeight - 20;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-        this.interval = setInterval(updateGameArea, 20);
+        this.interval = setInterval(updateGame, 20);
         window.addEventListener('keydown', function (e) {
-            myGameArea.key = e.keyCode;
+            gameArea.key = e.keyCode;
         })
         window.addEventListener('keyup', function (e) {
-            myGameArea.key = false;
+            gameArea.key = false;
         })
         window.addEventListener('mousemove', function (e) {
-            myGameArea.x = e.pageX;
-            myGameArea.y = e.pageY;
+            gameArea.x = e.pageX;
+            gameArea.y = e.pageY;
         })
     }, 
     clear : function(){
@@ -41,7 +41,7 @@ function vector2(x_, y_) {
     this.y = y_;
 }
 
-function component(width, height, color, x, y, imgt) {
+function gameObject(width, height, color, x, y, imgt) {
     this.width = width;
     this.height = height;
     this.speedX = 0;
@@ -51,7 +51,7 @@ function component(width, height, color, x, y, imgt) {
     this.x = x;
     this.y = y;    
     this.update = function() {
-        ctx = myGameArea.context;
+        ctx = gameArea.context;
         ctx.save();
         ctx.translate(this.x, this.y); 
         ctx.rotate(this.angle);
@@ -88,17 +88,16 @@ function playerMove(speed) {
     player.speedX = 0;
     player.speedY = 0; 
     //do wasd
-    if (myGameArea.key && myGameArea.key == 65) {player.speedX = -speed; }
-    if (myGameArea.key && myGameArea.key == 68) {player.speedX = speed; }
-    if (myGameArea.key && myGameArea.key == 87) {player.speedY = -speed; }
-    if (myGameArea.key && myGameArea.key == 83) {player.speedY = speed; }
-    pointto(player.x, player.y, myGameArea.x, myGameArea.y, 0, player);
+    if (gameArea.key && gameArea.key == 65) {player.speedX = -speed; }
+    if (gameArea.key && gameArea.key == 68) {player.speedX = speed; }
+    if (gameArea.key && gameArea.key == 87) {player.speedY = -speed; }
+    if (gameArea.key && gameArea.key == 83) {player.speedY = speed; }
+    pointto(player.x, player.y, gameArea.x, gameArea.y, 0, player);
     player.moveSpeed();
 }
 
-function updateGameArea() {
-    
-    myGameArea.clear();
+function updateGame() {
+    gameArea.clear();
     playerMove(4);
     if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 500)
     {
