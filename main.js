@@ -113,6 +113,7 @@ function collision(localObj, otherObj) {
 }
 
 function moveSnowball() {
+    snowball.speed = 30;
     if (collision(snowball, enemys[0])) {
         core++;
         snowball.x = player.x;
