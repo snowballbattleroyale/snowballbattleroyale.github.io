@@ -39,8 +39,16 @@ function component(width, height, color, x, y) {
 function updateGameArea() {
     myGameArea.clear();
     if (myGameArea.x && myGameArea.y) {
-        myGamePiece.x = myGameArea.x;
-        myGamePiece.y = myGameArea.y;        
+        for (var i = 0; i < myGameArea.x; i++)
+        {
+            myGamePiece.x++;
+        }
+        for (var i = 0; i < myGameArea.y; i++)
+        {
+            myGamePiece.y++;
+        }
+        //myGamePiece.x = myGameArea.x;
+        //myGamePiece.y = myGameArea.y;        
     }
     myGamePiece.update();
 }
