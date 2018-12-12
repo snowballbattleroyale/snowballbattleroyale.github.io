@@ -119,12 +119,12 @@ function moveSnowball() {
         snowball.y = player.y;
     }
     if (gameArea.key && gameArea.key == 32) {
-        pointto(snowball.x, snowball.y, gameArea.x, gameArea.y, 90, snowball);
         snowball.godir();
     }
     else {
         snowball.x = player.x;
         snowball.y = player.y;
+        pointto(snowball.x, snowball.y, gameArea.x, gameArea.y, 70, snowball);
     }
 }
 
