@@ -42,7 +42,7 @@ function component(width, height, color, x, y) {
 
 function distence(x_,y_,x1_,y1_)
 {
-    dist = Math.sqrt(x_*x_+x1_*x1_)-Math.sqrt(y_*y_+y1_*y1_)-;
+    var dist = Math.sqrt(x_*x_+x1_*x1_)-Math.sqrt(y_*y_+y1_*y1_)-;
     return dist;
 }
 
