@@ -77,12 +77,12 @@ function distence(x_,y_,x1_,y1_)
     return dist;
 }
 
-function pointto(x_,y_,x1_,y1_,obj) {
+function pointto(x_,y_,x1_,y1_, off,obj) {
     var objpos = new vector2(x_, y_);
     var localPos = new vector2(x1_,y1_);
     var offset = new vector2(objpos.x - localPos.x, objpos.y - localPos.y);
     var angle = Math.atan2(offset.y, offset.x);
-    obj.angle = angle - 90;
+    obj.angle = angle - off;
 }
 
 function playerMove(speed) {
@@ -93,7 +93,7 @@ function playerMove(speed) {
     if (myGameArea.key && myGameArea.key == 68) {player.speedX = speed; }
     if (myGameArea.key && myGameArea.key == 87) {player.speedY = -speed; }
     if (myGameArea.key && myGameArea.key == 83) {player.speedY = speed; }
-    pointto(player.x, player.y, myGameArea.x, myGameArea.y, player);
+    pointto(player.x, player.y, myGameArea.x, myGameArea.y, 0, player);
     player.moveSpeed();
 }
 
@@ -103,7 +103,7 @@ function updateGameArea() {
     playerMove(4);
     if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 500)
     {
-        pointto(enemys[0].x, enemys[0].y, player.x, player.y, enemys[0]);
+        pointto(enemys[0].x, enemys[0].y, player.x, player.y, 90, enemys[0]);
         enemys[0].godir();
     }
     player.update();
