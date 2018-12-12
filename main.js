@@ -124,7 +124,7 @@ function moveSnowball() {
     else {
         snowball.x = player.x;
         snowball.y = player.y;
-        pointto(snowball.x, snowball.y, gameArea.x, gameArea.y, 70, snowball);
+        pointto(snowball.x, snowball.y, gameArea.x, gameArea.y, 100, snowball);
     }
 }
 
