@@ -53,9 +53,13 @@ function component(width, height, color, x, y, imgt) {
         //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
         ctx.restore(); 
     }
-    this.newPos = function() {
+    this.godir = function() {
         this.x += this.speed * Math.sin(this.angle);
         this.y -= this.speed * Math.cos(this.angle);
+    }
+    this.moveSpeed = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;
     }
 }
 
@@ -73,18 +77,23 @@ function pointto(x_,y_,x1_,y1_,obj) {
     obj.angle = angle - 90;
 }
 
-function updateGameArea() {
-    myGameArea.clear();
+function playerMove() {
     player.speedX = 0;
     player.speedY = 0; 
     if (myGameArea.key && myGameArea.key == 37) {player.speedX = -1; }
     if (myGameArea.key && myGameArea.key == 39) {player.speedX = 1; }
     if (myGameArea.key && myGameArea.key == 38) {player.speedY = -1; }
     if (myGameArea.key && myGameArea.key == 40) {player.speedY = 1; }
+    player.moveSpeed();
+}
+
+function updateGameArea() {
+    myGameArea.clear();
+    playerMove();
     if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 500)
     {
         pointto(enemys[0].x, enemys[0].y, player.x, player.y, enemys[0]);
-        enemys[0].newPos();
+        enemys[0].godir();
     }
     player.update();
     enemys[0].update();
