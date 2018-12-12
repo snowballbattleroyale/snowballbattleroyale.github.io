@@ -14,8 +14,8 @@ var myGameArea = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
         window.addEventListener('mousedown', function (e) {
-            myGameArea.x = e.pageX-10;
-            myGameArea.y = e.pageY-10;
+            myGameArea.x = e.pageX-30;
+            myGameArea.y = e.pageY-30;
         })
     }, 
     clear : function(){
