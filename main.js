@@ -6,6 +6,8 @@ var enemys = [];
 var enemis = 30;
 var oogboog = [];
 var playerPos = new vector2(0, 0);
+var playerimg = document.getElementById("player");
+var enemyimg = document.getElementById("enemy");
 
 var mouX;
 var mouY;
@@ -18,6 +20,12 @@ function startGame() {
     player = new gameObject(30, 30, "red", (window.innerWidth - 10)/2, (window.innerHeight - 20)/2);
     snowball = new gameObject(10, 10, "white", player.x,player.y);
     gameArea.start();
+    for (var i = -1370; i < 1370; i+=10) {
+        oogboog[i] = new gameObject(10, 10, "blue", -1370, i);
+    }
+    for (var i = 1370; i < 1370*2; i+=10) {
+        oogboog[i] = new gameObject(10, 10, "blue", i-1370, -1370);
+    }
 }
 
 var gameArea = {
@@ -55,14 +63,6 @@ function vector2(x_, y_) {
     this.y = y_;
 }
 
-function loadanddrawImage(url, x_, y_) {
-    base_image = new Image();
-    base_image.src = url;
-    base_image.onload = function(){
-      context.drawImage(base_image, x_, y_);
-    }
-}
-
 function gameObject(width, height, color, x, y) {
     this.width = width;
     this.height = height;
@@ -83,6 +83,7 @@ function gameObject(width, height, color, x, y) {
             ctx.rotate(this.angle);
             ctx.fillStyle = color;
             ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+            //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
             ctx.restore(); 
         }
     }
@@ -184,7 +185,7 @@ function moveSnowball() {
 
 function spawnEnemy() {
     
-    enemys.push(new gameObject(30, 30, "blue", Math.floor(Math.random() * (500 - -500) ) + -500, Math.floor(Math.random() * (500 - -500) ) + -500), 2);
+    enemys.push(new gameObject(30, 30, "blue", Math.floor(Math.random() * (500 - -500) ) + -500, Math.floor(Math.random() * (500 - -500) ) + -500));
 }
 
 function updateGame() {
