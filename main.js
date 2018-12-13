@@ -3,7 +3,7 @@ var snowball;
 var core = 0;
 var enemysball = [];
 var enemys = [];
-var enemis = 40;
+var enemis = 30;
 var oogboog = [];
 var playerPos = new vector2(0, 0);
 var playerimg = document.getElementById("player");
@@ -17,6 +17,7 @@ function startGame() {
         enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
         enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
     }
+    this.interval = setInterval(spawnEnemy(), 1000);
     player = new gameObject(30, 30, "red", (window.innerWidth - 10)/2, (window.innerHeight - 20)/2);
     snowball = new gameObject(10, 10, "white", player.x,player.y);
     gameArea.start();
@@ -179,6 +180,12 @@ function moveSnowball() {
         snowball.y = player.y;
         pointto(snowball.x, snowball.y, gameArea.x, gameArea.y, 90 * Math.PI / 180, snowball);
     }
+}
+
+function spawnEnemy() {
+    enemys.push(new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370));
+    enemis += 1;
+    alert("It worked!");
 }
 
 function updateGame() {
