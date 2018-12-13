@@ -17,7 +17,6 @@ function startGame() {
         enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
         enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
     }
-    this.interval = setInterval(spawnEnemy(), 100);
     player = new gameObject(30, 30, "red", (window.innerWidth - 10)/2, (window.innerHeight - 20)/2);
     snowball = new gameObject(10, 10, "white", player.x,player.y);
     gameArea.start();
@@ -170,6 +169,7 @@ function moveSnowball() {
             snowball.x = player.x;
             snowball.y = player.y;
             enemys[i].destroy();
+            spawnEnemy();
         }
     }
     if (gameArea.md/*gameArea.key && gameArea.key == 32*/) {
