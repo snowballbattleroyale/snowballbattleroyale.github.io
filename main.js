@@ -1,6 +1,7 @@
 var player;
 var snowball;
 var core = 0;
+var enemysball = [];
 var enemys = [];
 var playerimg = document.getElementById("player");
 var enemyimg = document.getElementById("enemy");
@@ -9,7 +10,10 @@ var mouX;
 var mouY;
 
 function startGame() {
-    enemys[0] = new gameObject(30, 30, "blue", 10, 120);
+    for (var i = 0; i < 10; i++) {
+        enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (600 - 0) ) + 0, Math.floor(Math.random() * (600 - 0) ) + 0);
+        enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
+    }
     player = new gameObject(30, 30, "red", 10, 120);
     snowball = new gameObject(10, 10, "white", player.x,player.y);
     gameArea.start();
@@ -139,10 +143,12 @@ function updateGame() {
     gameArea.clear();
     moveSnowball();
     playerMove(4);
-    if (distence(player.x,player.y,enemys[0].x,enemys[0].y) < 500)
-    {
-        pointto(enemys[0].x, enemys[0].y, player.x, player.y, 90 * Math.PI / 180, enemys[0]);
-        enemys[0].godir();
+    for (var i = 0; i < 10; i++){
+        if (distence(player.x,player.y,enemys[i].x,enemys[i].y) < 500)
+        {
+            pointto(enemys[i].x, enemys[i].y, player.x, player.y, 90 * Math.PI / 180, enemys[i]);
+            enemys[i].godir();
+        }
     }
     player.update();
     snowball.update();
