@@ -73,6 +73,8 @@ function gameObject(width, height, color, x, y) {
     this.speed = 2;
     this.x = x;
     this.y = y;    
+    this.image = new Image();
+    this.image.src = color;
     this.destroyed = false;
     this.update = function() {
         if (!this.destroyed) {
@@ -83,8 +85,10 @@ function gameObject(width, height, color, x, y) {
             ctx.translate(this.x, this.y); 
             ctx.rotate(this.angle);
             ctx.fillStyle = color;
-            this.image = new Image();
-            this.image.src = color;
+            ctx.drawImage(this.image, 
+                this.x, 
+                this.y,
+                this.width, this.height);
             //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
             ctx.restore(); 
         }
