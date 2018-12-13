@@ -5,6 +5,7 @@ var enemysball = [];
 var enemys = [];
 var enemis = 30;
 var oogboog = [];
+var deads = [];
 var playerPos = new vector2(0, 0);
 var playerimg = document.getElementById("player");
 var enemyimg = document.getElementById("enemy");
@@ -107,6 +108,11 @@ function gameObject(width, height, color, x, y) {
     }
 }
 
+function dieMan(x_, y_) {
+    deads.push(new gameObject(30, 30, "orange", x_, y_));
+    deads[deads.length].destroyed = true;
+}
+
 function distence(x_,y_,x1_,y1_)
 {
     var dist = Math.sqrt((x1_-x_)*(x1_-x_)+(y1_-y_)*(y1_-y_));
@@ -168,6 +174,7 @@ function moveSnowball() {
             core++;
             snowball.x = player.x;
             snowball.y = player.y;
+            dieMan(enemys[i].x, enemys[i].y);
             enemys[i].destroy();
             enemys.splice(i, 1);
             spawnEnemy();
