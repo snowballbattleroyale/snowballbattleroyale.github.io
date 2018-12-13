@@ -122,25 +122,21 @@ function playerMove(speed) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x += speed;
         }
-        worldPos.x -= speed;
     }
     if (gameArea.key && gameArea.key == 68) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x -= speed;
         }
-        worldPos.x += speed;
     }
     if (gameArea.key && gameArea.key == 87) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y += speed;
         }
-        worldPos.y -= speed;
     }
     if (gameArea.key && gameArea.key == 83) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y -= speed;
         }
-        worldPos.y += speed;
     }
     pointto(player.x, player.y, gameArea.x, gameArea.y, 0, player);
     player.moveSpeed();
