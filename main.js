@@ -15,7 +15,7 @@ function startGame() {
         enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
         enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
     }
-    player = new gameObject(30, 30, "red", window.innerWidth - 10, window.innerHeight - 20);
+    player = new gameObject(30, 30, "red", (window.innerWidth - 10)/2, (window.innerHeight - 20)/2);
     snowball = new gameObject(10, 10, "white", player.x,player.y);
     gameArea.start();
 }
