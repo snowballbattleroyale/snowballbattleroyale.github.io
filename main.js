@@ -4,6 +4,7 @@ var core = 0;
 var enemysball = [];
 var enemys = [];
 var enemis = 20;
+var playerPos = new vector2(0, 0);
 var playerimg = document.getElementById("player");
 var enemyimg = document.getElementById("enemy");
 
@@ -84,8 +85,7 @@ function gameObject(width, height, color, x, y) {
         this.y -= this.speed * Math.cos(this.angle);
     }
     this.moveSpeed = function() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+        
     }
     this.destroy = function() {
         this.destroyed = true;
@@ -122,21 +122,25 @@ function playerMove(speed) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x += speed;
         }
+        worldPos.x -= speed;
     }
     if (gameArea.key && gameArea.key == 68) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x -= speed;
         }
+        worldPos.x += speed;
     }
     if (gameArea.key && gameArea.key == 87) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y += speed;
         }
+        worldPos.y -= speed;
     }
     if (gameArea.key && gameArea.key == 83) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y -= speed;
         }
+        worldPos.y += speed;
     }
     pointto(player.x, player.y, gameArea.x, gameArea.y, 0, player);
     player.moveSpeed();
