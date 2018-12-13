@@ -183,7 +183,7 @@ function moveSnowball() {
 }
 
 function spawnEnemy() {
-    enemys.push(new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370));
+    enemys.push(new gameObject(30, 30, "blue", player.y+100/*Math.floor(Math.random() * (1370 - -1370) ) + -1370*/, player.x +100));
 }
 
 function updateGame() {
