@@ -100,14 +100,10 @@ function gameObject(width, height, color, x, y) {
     }
     this.destroy = function() {
         this.destroyed = true;
-        this.width = 0;
-        this.height = 0;
         this.speedX = 0;
         this.speedY = 0;    
         this.angle = 0;
         this.speed = 0;
-        this.x = 0;
-        this.y = 0;   
     }
 }
 
