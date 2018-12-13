@@ -191,7 +191,7 @@ function updateGame() {
             pointto(enemys[i].x, enemys[i].y, player.x, player.y, 90 * Math.PI / 180, enemys[i]);
             enemys[i].godir();
         }
-        if (true) {
+        if (collision(player, enemys[i])) {
             player.destroy();
             core = "you ded"
         }
