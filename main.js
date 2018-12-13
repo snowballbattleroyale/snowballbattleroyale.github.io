@@ -110,7 +110,6 @@ function gameObject(width, height, color, x, y) {
 
 function dieMan(x_, y_) {
     deads.push(new gameObject(30, 30, "orange", x_, y_));
-    deads[deads.length].destroyed = true;
 }
 
 function distence(x_,y_,x1_,y1_)
