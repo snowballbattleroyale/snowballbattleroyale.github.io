@@ -119,24 +119,19 @@ function playerMove(speed) {
     player.speedY = 0; 
     //do wasd
     if (gameArea.key && gameArea.key == 65) {
-        for (var i = 0; i < enemis; i++) {
+        player.speedX -= speed;
+        /*for (var i = 0; i < enemis; i++) {
             enemys[i].x += speed;
-        }
+        }*/
     }
     if (gameArea.key && gameArea.key == 68) {
-        for (var i = 0; i < enemis; i++) {
-            enemys[i].x -= speed;
-        }
+        player.speedX += speed;
     }
     if (gameArea.key && gameArea.key == 87) {
-        for (var i = 0; i < enemis; i++) {
-            enemys[i].y += speed;
-        }
+        player.speedY -= speed;
     }
     if (gameArea.key && gameArea.key == 83) {
-        for (var i = 0; i < enemis; i++) {
-            enemys[i].y -= speed;
-        }
+        player.speedY += speed;
     }
     pointto(player.x, player.y, gameArea.x, gameArea.y, 0, player);
     player.moveSpeed();
