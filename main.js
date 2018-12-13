@@ -22,10 +22,10 @@ function startGame() {
     snowball = new gameObject(10, 10, "Player.png", player.x,player.y);
     gameArea.start();
     for (var i = -1370; i < 1370; i+=10) {
-        oogboog[i] = new gameObject(10, 10, "blue", -1370, i);
+        oogboog[i] = new gameObject(10, 10, "Enemy.png", -1370, i);
     }
     for (var i = 1370; i < 1370*2; i+=10) {
-        oogboog[i] = new gameObject(10, 10, "blue", i-1370, -1370);
+        oogboog[i] = new gameObject(10, 10, "Enemy.png", i-1370, -1370);
     }
 }
 
