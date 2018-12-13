@@ -2,7 +2,7 @@ var player;
 var snowball;
 var core = 0;
 var enemysball = [];
-var enemys = [];
+var enemys = [];e
 var enemis = 20;
 var playerimg = document.getElementById("player");
 var enemyimg = document.getElementById("enemy");
@@ -61,7 +61,7 @@ function gameObject(width, height, color, x, y) {
     this.speedX = 0;
     this.speedY = 0;    
     this.angle = 0;
-    this.speed = 1;
+    this.speed = 2;
     this.x = x;
     this.y = y;    
     this.destroyed = false;
