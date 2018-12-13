@@ -58,9 +58,9 @@ function vector2(x_, y_) {
 function gameObject(width, height, color, x, y) {
     this.width = width;
     this.height = height;
-    this.speedX = 0;
-    this.speedY = 0;    
-    this.angle = 0;
+    this.speedX = 1;
+    this.speedY = 1;    
+    this.angle = 1;
     this.speed = 2;
     this.x = x;
     this.y = y;    
