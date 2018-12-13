@@ -184,8 +184,6 @@ function moveSnowball() {
 
 function spawnEnemy() {
     enemys.push(new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370));
-    enemis += 1;
-    alert("It worked!");
 }
 
 function updateGame() {
