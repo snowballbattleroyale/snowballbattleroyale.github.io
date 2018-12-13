@@ -82,7 +82,7 @@ function gameObject(width, height, color, x, y, type) {
             ctx.translate(this.x, this.y); 
             ctx.rotate(this.angle);
             ctx.fillStyle = color;
-            if (type === 1) {
+            /*if (type === 1) {
                 loadanddrawImage('Player.png', this.x, this.y);
             }
             if (type === 2) {
@@ -90,8 +90,8 @@ function gameObject(width, height, color, x, y, type) {
             }
             if (type === 3) {
                 ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
-            }
-            //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+            }*/
+            ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
             ctx.restore(); 
         }
     }
