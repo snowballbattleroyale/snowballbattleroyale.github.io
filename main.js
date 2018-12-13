@@ -69,7 +69,6 @@ function gameObject(width, height, color, x, y) {
         if (!this.destroyed) {
             ctx = gameArea.context;
             ctx.save();
-            ctx.drawImage(playerimg, -1370, -1370, 1370, 1370);
             ctx.fillText(core, 100, 50);
             ctx.fillText(player.x + " " + player.y, 100, 100);
             ctx.translate(this.x, this.y); 
