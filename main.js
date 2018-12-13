@@ -195,8 +195,10 @@ function updateGame() {
     for (var i = 0; i < enemis; i++){
         if (distence(player.x,player.y,enemys[i].x,enemys[i].y) < 1000)
         {
-            pointto(enemys[i].x, enemys[i].y, player.x, player.y, 90 * Math.PI / 180, enemys[i]);
-            enemys[i].godir();
+            if (!player.destroyed) {
+                pointto(enemys[i].x, enemys[i].y, player.x, player.y, 90 * Math.PI / 180, enemys[i]);
+                enemys[i].godir();
+            }
         }
         if (collision(player, enemys[i])) {
             player.destroy();
