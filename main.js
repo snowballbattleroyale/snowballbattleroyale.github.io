@@ -64,17 +64,20 @@ function gameObject(width, height, color, x, y) {
     this.speed = 1;
     this.x = x;
     this.y = y;    
+    this.destroyed = false;
     this.update = function() {
-        ctx = gameArea.context;
-        ctx.save();
-        ctx.fillText(core, 100, 50);
-        ctx.fillText(player.x + " " + player.y, 100, 100);
-        ctx.translate(this.x, this.y); 
-        ctx.rotate(this.angle);
-        ctx.fillStyle = color;
-        ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
-        //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
-        ctx.restore(); 
+        if (!this.destroyed) {
+            ctx = gameArea.context;
+            ctx.save();
+            ctx.fillText(core, 100, 50);
+            ctx.fillText(player.x + " " + player.y, 100, 100);
+            ctx.translate(this.x, this.y); 
+            ctx.rotate(this.angle);
+            ctx.fillStyle = color;
+            ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+            //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+            ctx.restore(); 
+        }
     }
     this.godir = function() {
         this.x += this.speed * Math.sin(this.angle);
@@ -83,6 +86,17 @@ function gameObject(width, height, color, x, y) {
     this.moveSpeed = function() {
         this.x += this.speedX;
         this.y += this.speedY;
+    }
+    this.destroy = function() {
+        this.destroyed = true;
+        this.width = 0;
+        this.height = 0;
+        this.speedX = 0;
+        this.speedY = 0;    
+        this.angle = 0;
+        this.speed = 0;
+        this.x = 0;
+        this.y = 0;   
     }
 }
 
@@ -131,6 +145,7 @@ function moveSnowball() {
             core++;
             snowball.x = player.x;
             snowball.y = player.y;
+            enemys[i].destroy();
         }
     }
     if (gameArea.md/*gameArea.key && gameArea.key == 32*/) {
