@@ -67,6 +67,7 @@ function gameObject(width, height, color, x, y) {
         ctx = gameArea.context;
         ctx.save();
         ctx.fillText(core, 100, 50);
+        ctx.fillText(player.x + " " + player.y, 100, 100);
         ctx.translate(this.x, this.y); 
         ctx.rotate(this.angle);
         ctx.fillStyle = color;
