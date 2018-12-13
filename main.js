@@ -6,19 +6,17 @@ var enemys = [];
 var enemis = 30;
 var oogboog = [];
 var playerPos = new vector2(0, 0);
-var playerimg = document.getElementById("player");
-var enemyimg = document.getElementById("enemy");
 
 var mouX;
 var mouY;
 
 function startGame() {
     for (var i = 0; i < enemis; i++) {
-        enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
+        enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370, 2);
         enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
     }
-    player = new gameObject(30, 30, "red", (window.innerWidth - 10)/2, (window.innerHeight - 20)/2);
-    snowball = new gameObject(10, 10, "white", player.x,player.y);
+    player = new gameObject(30, 30, "red", (window.innerWidth - 10)/2, (window.innerHeight - 20)/2, 1);
+    snowball = new gameObject(10, 10, "white", player.x,player.y, 3);
     gameArea.start();
     for (var i = -1370; i < 1370; i+=10) {
         oogboog[i] = new gameObject(10, 10, "blue", -1370, i);
@@ -63,7 +61,15 @@ function vector2(x_, y_) {
     this.y = y_;
 }
 
-function gameObject(width, height, color, x, y) {
+function loadanddrawImage(url, x_, y_) {
+    base_image = new Image();
+    base_image.src = url;
+    base_image.onload = function(){
+      context.drawImage(base_image, x_, y_);
+    }
+}
+
+function gameObject(width, height, color, x, y, type) {
     this.width = width;
     this.height = height;
     this.speedX = 1;
@@ -82,7 +88,15 @@ function gameObject(width, height, color, x, y) {
             ctx.translate(this.x, this.y); 
             ctx.rotate(this.angle);
             ctx.fillStyle = color;
-            ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+            if (type === 1) {
+                loadanddrawImage('Player.png', this.x, this.y);
+            }
+            if (type === 2) {
+                loadanddrawImage('Enemy.png', this.x, this.y);
+            }
+            if (type === 3) {
+                ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+            }
             //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
             ctx.restore(); 
         }
@@ -185,7 +199,7 @@ function moveSnowball() {
 
 function spawnEnemy() {
     
-    enemys.push(new gameObject(30, 30, "blue", Math.floor(Math.random() * (500 - -500) ) + -500, Math.floor(Math.random() * (500 - -500) ) + -500));
+    enemys.push(new gameObject(30, 30, "blue", Math.floor(Math.random() * (500 - -500) ) + -500, Math.floor(Math.random() * (500 - -500) ) + -500), 2);
 }
 
 function updateGame() {
