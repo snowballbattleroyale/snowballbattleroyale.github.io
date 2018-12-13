@@ -37,7 +37,7 @@ var gameArea = {
             gameArea.md = e;
         })
         window.addEventListener('mouseup', function (e) {
-            gameArea.md = e;
+            gameArea.md = false;
         })
     }, 
     clear : function(){
