@@ -3,7 +3,7 @@ var snowball;
 var core = 0;
 var enemysball = [];
 var enemys = [];
-var enemis = 20;
+var enemis = 40;
 var oogboog = [];
 var playerPos = new vector2(0, 0);
 var playerimg = document.getElementById("player");
