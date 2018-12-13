@@ -15,7 +15,7 @@ function startGame() {
         enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
         enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
     }
-    player = new gameObject(30, 30, "red", 10, 120);
+    player = new gameObject(window.innerWidth - 10, window.innerHeight - 20, "red", 10, 120);
     snowball = new gameObject(10, 10, "white", player.x,player.y);
     gameArea.start();
 }
@@ -60,7 +60,7 @@ function gameObject(width, height, color, x, y) {
     this.height = height;
     this.speedX = 1;
     this.speedY = 1;    
-    this.angle = 1;
+    this.angle = 0;
     this.speed = 2;
     this.x = x;
     this.y = y;    
@@ -118,10 +118,26 @@ function playerMove(speed) {
     player.speedX = 0;
     player.speedY = 0; 
     //do wasd
-    if (gameArea.key && gameArea.key == 65) {player.speedX = -speed; }
-    if (gameArea.key && gameArea.key == 68) {player.speedX = speed; }
-    if (gameArea.key && gameArea.key == 87) {player.speedY = -speed; }
-    if (gameArea.key && gameArea.key == 83) {player.speedY = speed; }
+    if (gameArea.key && gameArea.key == 65) {
+        for (var i = 0; i < enemis; i++) {
+            enemys[i].x += speed;
+        }
+    }
+    if (gameArea.key && gameArea.key == 68) {
+        for (var i = 0; i < enemis; i++) {
+            enemys[i].x -= speed;
+        }
+    }
+    if (gameArea.key && gameArea.key == 87) {
+        for (var i = 0; i < enemis; i++) {
+            enemys[i].y += speed;
+        }
+    }
+    if (gameArea.key && gameArea.key == 83) {
+        for (var i = 0; i < enemis; i++) {
+            enemys[i].y -= speed;
+        }
+    }
     pointto(player.x, player.y, gameArea.x, gameArea.y, 0, player);
     player.moveSpeed();
 }
