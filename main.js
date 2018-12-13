@@ -18,12 +18,6 @@ function startGame() {
     player = new gameObject(30, 30, "red", (window.innerWidth - 10)/2, (window.innerHeight - 20)/2, 1);
     snowball = new gameObject(10, 10, "white", player.x,player.y, 3);
     gameArea.start();
-    for (var i = -1370; i < 1370; i+=10) {
-        oogboog[i] = new gameObject(10, 10, "blue", -1370, i);
-    }
-    for (var i = 1370; i < 1370*2; i+=10) {
-        oogboog[i] = new gameObject(10, 10, "blue", i-1370, -1370);
-    }
 }
 
 var gameArea = {
