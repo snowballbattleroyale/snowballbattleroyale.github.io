@@ -23,8 +23,8 @@ function startGame() {
     for (var i = -1370; i < 1370; i+=10) {
         oogboog[i] = new gameObject(10, 10, "blue", -1370, i);
     }
-    for (var i = -1370; i < 1370; i+=10) {
-        oogboog[i] = new gameObject(10, 10, "blue", i, -1370);
+    for (var i = 1370; i < 1370*2; i+=10) {
+        oogboog[i] = new gameObject(10, 10, "blue", i-1370, -1370);
     }
 }
 
