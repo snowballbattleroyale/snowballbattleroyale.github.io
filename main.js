@@ -169,6 +169,7 @@ function moveSnowball() {
             snowball.x = player.x;
             snowball.y = player.y;
             enemys[i].destroy();
+            enemys.splice(i, 1);
             spawnEnemy();
         }
     }
@@ -183,6 +184,7 @@ function moveSnowball() {
 }
 
 function spawnEnemy() {
+    
     enemys.push(new gameObject(30, 30, "blue", player.y+100/*Math.floor(Math.random() * (1370 - -1370) ) + -1370*/, player.x +100));
 }
 
