@@ -15,7 +15,7 @@ var mouX;
 var mouY;
 
 function startGame() {
-    var resetButton = new gameObject(50, 20, "green", 100, 100);
+    resetButton = new gameObject(50, 20, "green", 100, 100);
     for (var i = 0; i < enemis; i++) {
         enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
         enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
@@ -214,5 +214,6 @@ function updateGame() {
         enemys[i].update();
     }
     player.update();
+    resetButton.update();
     snowball.update();
 }
