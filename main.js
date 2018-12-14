@@ -10,6 +10,7 @@ var playerPos = new vector2(0, 0);
 var playerimg = document.getElementById("player");
 var enemyimg = document.getElementById("enemy");
 var resetButton;
+var prevCore = [];
 
 var mouX;
 var mouY;
@@ -81,7 +82,8 @@ function gameObject(width, height, color, x, y) {
             ctx = gameArea.context;
             ctx.save();
             ctx.fillStyle = "green";
-            ctx.font = "30pt";
+            ctx.font = "30pt Calibri";
+            ctx.fillText(prevCore, 150, 50);
             ctx.fillText(core, 100, 50);
             ctx.translate(this.x, this.y); 
             ctx.rotate(this.angle);
@@ -215,6 +217,7 @@ function updateGame() {
     if (gameArea.x && gameArea.y) {
         if (resetButton.clicked()) {
           player.destroyed = false;
+          prevCore.push(core);
           core = 0;
         }
     }
