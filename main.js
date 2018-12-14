@@ -15,17 +15,17 @@ var mouY;
 
 function startGame() {
     for (var i = 0; i < enemis; i++) {
-        enemys[i] = new gameObject(30, 30, "Enemy.png", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
-        //enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
+        enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
+        enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
     }
-    player = new gameObject(30, 30, "Player.png", (window.innerWidth - 10)/2, (window.innerHeight - 20)/2);
-    snowball = new gameObject(10, 10, "Player.png", player.x,player.y);
+    player = new gameObject(30, 30, "red", (window.innerWidth - 10)/2, (window.innerHeight - 20)/2);
+    snowball = new gameObject(10, 10, "white", player.x,player.y);
     gameArea.start();
     for (var i = -1370; i < 1370; i+=10) {
-        oogboog[i] = new gameObject(10, 10, "Enemy.png", -1370, i);
+        oogboog[i] = new gameObject(10, 10, "blue", -1370, i);
     }
     for (var i = 1370; i < 1370*2; i+=10) {
-        oogboog[i] = new gameObject(10, 10, "Enemy.png", i-1370, -1370);
+        oogboog[i] = new gameObject(10, 10, "blue", i-1370, -1370);
     }
 }
 
@@ -73,8 +73,6 @@ function gameObject(width, height, color, x, y) {
     this.speed = 2;
     this.x = x;
     this.y = y;    
-    this.image = new Image();
-    this.image.src = color;
     this.destroyed = false;
     this.update = function() {
         if (!this.destroyed) {
@@ -85,11 +83,8 @@ function gameObject(width, height, color, x, y) {
             ctx.translate(this.x, this.y); 
             ctx.rotate(this.angle);
             ctx.fillStyle = color;
-            //ctx.drawImage(this.image, 
-            //    this.x, 
-            //    this.y,
-            //    this.width, this.height);
             ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+            //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
             ctx.restore(); 
         }
         else {
