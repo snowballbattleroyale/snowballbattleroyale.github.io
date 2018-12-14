@@ -214,11 +214,13 @@ function updateGame() {
     gameArea.clear();
     moveSnowball();
     playerMove(4);
-    if (gameArea.x && gameArea.y) {
-        if (resetButton.clicked()) {
-          player.destroyed = false;
-          prevCore.push(core);
-          core = 0;
+    if (gameArea.md && !player.destroyed) {
+        if (gameArea.x && gameArea.y) {
+            if (resetButton.clicked()) {
+                player.destroyed = false;
+                prevCore.push(core);
+                core = 0;
+            }
         }
     }
     for (var i = 0; i < enemis; i++){
