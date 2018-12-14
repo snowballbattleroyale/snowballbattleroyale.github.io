@@ -218,7 +218,6 @@ function updateGame() {
         if (gameArea.x && gameArea.y) {
             if (resetButton.clicked()) {
                 player.destroyed = false;
-                prevCore.push(core);
                 core = 0;
             }
         }
@@ -232,8 +231,8 @@ function updateGame() {
             }
         }
         if (collision(player, enemys[i])) {
+            prevCore.push(core);
             player.destroy();
-            core = "you ded"
         }
         enemys[i].update();
     }
