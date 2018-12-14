@@ -89,7 +89,7 @@ function gameObject(width, height, color, x, y) {
                 this.x, 
                 this.y,
                 this.width, this.height);
-            //ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+            ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
             ctx.restore(); 
         }
         else {
