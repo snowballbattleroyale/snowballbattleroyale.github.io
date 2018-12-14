@@ -84,7 +84,7 @@ function gameObject(width, height, color, x, y) {
             ctx.fillStyle = "green";
             ctx.font = "30pt Calibri";
             ctx.fillText("Previous Scores:", 150, 50);
-            ctx.fillText(prevCore, 250, 50);
+            ctx.fillText(prevCore, 400, 50);
             ctx.fillText(core, 100, 50);
             ctx.translate(this.x, this.y); 
             ctx.rotate(this.angle);
