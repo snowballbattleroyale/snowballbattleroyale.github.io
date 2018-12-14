@@ -230,9 +230,8 @@ function updateGame() {
                 enemys[i].godir();
             }
         }
-        if (collision(player, enemys[i])) {
+        if (collision(player, enemys[i]) && !player.destroyed) {
             prevCore.push(core);
-            
             player.destroy();
         }
         enemys[i].update();
