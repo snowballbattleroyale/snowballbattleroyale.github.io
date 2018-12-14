@@ -232,9 +232,13 @@ function updateGame() {
         }
         if (collision(player, enemys[i])) {
             prevCore.push(core);
+            
             player.destroy();
         }
         enemys[i].update();
+    }
+    if (prevCore.length >= 5) {
+        prevCore = [];
     }
     player.update();
     resetButton.update();
