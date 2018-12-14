@@ -93,6 +93,17 @@ function gameObject(width, height, color, x, y) {
             ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
         }
     }
+    this.clicked = function() {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var clicked = true;
+        if ((mybottom < gameArea.y) || (mytop > gameArea.y) || (myright < gameArea.x) || (myleft > gameArea.x)) {
+            clicked = false;
+        }
+        return clicked;
+    }
     this.godir = function() {
         this.x += this.speed * Math.sin(this.angle);
         this.y -= this.speed * Math.cos(this.angle);
@@ -199,6 +210,11 @@ function updateGame() {
     gameArea.clear();
     moveSnowball();
     playerMove(4);
+    if (gameArea.x && gameArea.y) {
+        if (myUpBtn.clicked()) {
+          player.destroyed = false;
+        }
+    }
     for (var i = 0; i < enemis; i++){
         if (distence(player.x,player.y,enemys[i].x,enemys[i].y) < 1000)
         {
