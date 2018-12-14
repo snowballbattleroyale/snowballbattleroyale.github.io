@@ -214,7 +214,7 @@ function updateGame() {
     gameArea.clear();
     moveSnowball();
     playerMove(4);
-    if (gameArea.md && !player.destroyed) {
+    if (gameArea.md && player.destroyed) {
         if (gameArea.x && gameArea.y) {
             if (resetButton.clicked()) {
                 player.destroyed = false;
