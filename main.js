@@ -154,21 +154,25 @@ function playerMove(speed) {
     if (gameArea.key && gameArea.key == 65) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x += speed;
+            ammos[i].x += speed;
         }
     }
     if (gameArea.key && gameArea.key == 68) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x -= speed;
+            ammos[i].x -= speed;
         }
     }
     if (gameArea.key && gameArea.key == 87) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y += speed;
+            ammos[i].y += speed;
         }
     }
     if (gameArea.key && gameArea.key == 83) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y -= speed;
+            ammos[i].y -= speed;
         }
     }
     pointto(player.x, player.y, gameArea.x, gameArea.y, 0, player);
