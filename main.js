@@ -154,25 +154,25 @@ function playerMove(speed) {
     if (gameArea.key && gameArea.key == 65) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x += speed;
-            ammos[i].x += speed;
+            ammo[i].x += speed;
         }
     }
     if (gameArea.key && gameArea.key == 68) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x -= speed;
-            ammos[i].x -= speed;
+            ammo[i].x -= speed;
         }
     }
     if (gameArea.key && gameArea.key == 87) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y += speed;
-            ammos[i].y += speed;
+            ammo[i].y += speed;
         }
     }
     if (gameArea.key && gameArea.key == 83) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y -= speed;
-            ammos[i].y -= speed;
+            ammo[i].y -= speed;
         }
     }
     pointto(player.x, player.y, gameArea.x, gameArea.y, 0, player);
@@ -206,6 +206,7 @@ function moveSnowball() {
     }
     if (gameArea.md && ammos > 0) {
         snowball.godir();
+        ammos--;
     }
     else {
         snowball.x = player.x;
