@@ -85,7 +85,7 @@ function gameObject(width, height, color, x, y) {
             ctx = gameArea.context;
             ctx.save();
             ctx.fillStyle = "green";
-            ctx.font = "30pt Calibri";
+            ctx.font = "15pt Calibri";
             ctx.fillText(ammos, 100, 75);
             ctx.fillText("Previous Scores:", 170, 50);
             ctx.fillText(prevCore, 450, 50);
