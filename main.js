@@ -6,6 +6,8 @@ var enemys = [];
 var enemis = 30;
 var oogboog = [];
 var deads = [];
+var ammo = [];
+var ammos = 10;
 var playerPos = new vector2(0, 0);
 var playerimg = document.getElementById("player");
 var enemyimg = document.getElementById("enemy");
@@ -18,6 +20,7 @@ var mouY;
 function startGame() {
     resetButton = new gameObject(50, 20, "green", 100, 100);
     for (var i = 0; i < enemis; i++) {
+        ammo[i] = new gameObject(30, 30, "white", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
         enemys[i] = new gameObject(30, 30, "blue", Math.floor(Math.random() * (1370 - -1370) ) + -1370, Math.floor(Math.random() * (1370 - -1370) ) + -1370);
         enemysball[i] = new gameObject(10, 10, "white", enemys[i].x, enemys[i].y);
     }
@@ -83,6 +86,7 @@ function gameObject(width, height, color, x, y) {
             ctx.save();
             ctx.fillStyle = "green";
             ctx.font = "30pt Calibri";
+            ctx.fillText(ammos, 100, 75);
             ctx.fillText("Previous Scores:", 170, 50);
             ctx.fillText(prevCore, 450, 50);
             ctx.fillText(core, 100, 50);
@@ -196,7 +200,7 @@ function moveSnowball() {
             spawnEnemy();
         }
     }
-    if (gameArea.md/*gameArea.key && gameArea.key == 32*/) {
+    if (gameArea.md && ammos > 0) {
         snowball.godir();
     }
     else {
@@ -224,6 +228,7 @@ function updateGame() {
         }
     }
     for (var i = 0; i < enemis; i++){
+        ammo[i].update();
         if (distence(player.x,player.y,enemys[i].x,enemys[i].y) < 1000)
         {
             if (!player.destroyed) {
@@ -234,6 +239,9 @@ function updateGame() {
         if (collision(player, enemys[i]) && !player.destroyed) {
             prevCore.push(core);
             player.destroy();
+        }
+        if (collision(player, ammo[i])&&!player.destroyed) {
+            ammos+=4;
         }
         enemys[i].update();
     }
