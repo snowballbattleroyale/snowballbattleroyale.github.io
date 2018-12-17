@@ -44,10 +44,11 @@ var gameArea = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGame, 20);
         window.addEventListener('keydown', function (e) {
-            gameArea.key = e.keyCode;
+            gameArea.keys = (gameArea.keys || []);
+            gameArea.keys[e.keyCode] = true;
         })
         window.addEventListener('keyup', function (e) {
-            gameArea.key = false;
+            gameArea.keys[e.keyCode] = false; 
         })
         window.addEventListener('mousemove', function (e) {
             gameArea.x = e.pageX;
@@ -151,25 +152,25 @@ function playerMove(speed) {
     player.speedX = 0;
     player.speedY = 0; 
     //do wasd
-    if (gameArea.key && gameArea.key == 65) {
+    if (myGameArea.keys && myGameArea.keys[65]) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x += speed;
             ammo[i].x += speed;
         }
     }
-    if (gameArea.key && gameArea.key == 68) {
+    if (gameArea.keys && gameArea.keys[68]) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].x -= speed;
             ammo[i].x -= speed;
         }
     }
-    if (gameArea.key && gameArea.key == 87) {
+    if (gameArea.keys && gameArea.keys[87]) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y += speed;
             ammo[i].y += speed;
         }
     }
-    if (gameArea.key && gameArea.key == 83) {
+    if (gameArea.keys && gameArea.keys[83]) {
         for (var i = 0; i < enemis; i++) {
             enemys[i].y -= speed;
             ammo[i].y -= speed;
